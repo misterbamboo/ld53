@@ -15,36 +15,6 @@ public class Waypoints : MonoBehaviour
 
     public List<Waypoint> AskShortestWay(Waypoint start, Waypoint end)
     {
-        /*
-        var routes = new Dictionary<int, List<Waypoint>>();
-
-        // Check Forward
-
-        var maxCount = 10;
-        var currentCount = 0;
-
-        Waypoint current = start;
-        while (current != end && currentCount < maxCount)
-        {            
-            var availables = current.GetAvailableWaypoints();
-           
-            if (!routes.ContainsKey(0))
-            {
-                routes.Add(0, new List<Waypoint>());                
-            }
-
-            routes[0].Add(availables[0]);
-
-            current = availables[0];
-
-            // To remove block inifite
-            currentCount++;
-        }
-          
-        // Check Backward
-        return routes[0];
-        */
-
         var route = new List<Waypoint>();
 
         var maxCount = 50;
