@@ -143,7 +143,7 @@ public class TukTukController : MonoBehaviour
 
     private Vector3 AddHeightToPos(Vector3 pos, float y, float t)
     {
-        var maxY = y * 3;
+        var maxY = y * 2;
         var heightFactor = Mathf.Sin(Mathf.PI * t);
         var targetY = maxY * heightFactor;
         return new Vector3(pos.x, targetY, pos.z);
