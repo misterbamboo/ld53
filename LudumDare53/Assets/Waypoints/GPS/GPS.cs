@@ -5,7 +5,7 @@ using UnityEngine;
 public class GPS : MonoBehaviour
 {
     [SerializeField]
-    float refreshTimeInSeconds = 2.0f;
+    float refreshTimeInSeconds = 1.0f;
 
     [SerializeField]
     Waypoint destination;
