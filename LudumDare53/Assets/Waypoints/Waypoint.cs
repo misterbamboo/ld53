@@ -7,6 +7,9 @@ public class Waypoint : MonoBehaviour
     [SerializeField]
     List<Waypoint> AvailableWaypoints = new List<Waypoint>();
 
+    [SerializeField]
+    MeshRenderer meshRenderer;
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
@@ -18,13 +21,18 @@ public class Waypoint : MonoBehaviour
 
     public void Start()
     {
+        meshRenderer.enabled = false;
+
         var otherWaypoints = GameObject.FindObjectsOfType<Waypoint>();
 
         foreach (var waypoint in otherWaypoints)
         {
             if (waypoint.GetAvailableWaypoints().Contains(this))
             {
-                AvailableWaypoints.Add(waypoint);
+                if (!AvailableWaypoints.Contains(waypoint))
+                {
+                    AvailableWaypoints.Add(waypoint);
+                }
             }
         }
     }
