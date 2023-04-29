@@ -65,7 +65,7 @@ public class TukTukController : MonoBehaviour
         Axles.backRightWheel.brakeTorque = brake;
         Axles.backLeftWheel.brakeTorque = brake;
 
-        print($"{Axles.frontLeftWheel.rpm} - brake {brake}");
+        // print($"{Axles.frontLeftWheel.rpm} - brake {brake}");
     }
 }
 
