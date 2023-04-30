@@ -199,20 +199,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 133169729752107919, guid: 48e6bc29a99e8eb4383f1edbb655febc,
+    - target: {fileID: 6415223402265648566, guid: 48e6bc29a99e8eb4383f1edbb655febc,
         type: 3}
-      propertyPath: m_LocalScale.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 133169729752107919, guid: 48e6bc29a99e8eb4383f1edbb655febc,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 465470970479134345, guid: 48e6bc29a99e8eb4383f1edbb655febc,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -34.5
+      propertyPath: m_Name
+      value: GPSBorder
       objectReference: {fileID: 0}
     - target: {fileID: 6697304193351161008, guid: 48e6bc29a99e8eb4383f1edbb655febc,
         type: 3}
@@ -273,6 +263,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Game
+      objectReference: {fileID: 0}
+    - target: {fileID: 9213043413873162844, guid: 48e6bc29a99e8eb4383f1edbb655febc,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9213043413873162844, guid: 48e6bc29a99e8eb4383f1edbb655febc,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48e6bc29a99e8eb4383f1edbb655febc, type: 3}
