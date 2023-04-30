@@ -81,8 +81,8 @@ public class TukTukController : MonoBehaviour
         axles.backRightWheel.motorTorque = motor;
         axles.backLeftWheel.motorTorque = motor;
 
-        axles.frontLeftWheel.brakeTorque = brake * 0.1f;
-        axles.frontRightWheel.brakeTorque = brake * 0.1f;
+        //axles.frontLeftWheel.brakeTorque = brake * 0.1f;
+        //axles.frontRightWheel.brakeTorque = brake * 0.1f;
         axles.backRightWheel.brakeTorque = brake;
         axles.backLeftWheel.brakeTorque = brake;
     }
@@ -98,7 +98,7 @@ public class TukTukController : MonoBehaviour
         trailRenderer.emitting = false;
         if (wheelCollider.GetGroundHit(out WheelHit hit))
         {
-            if (hit.sidewaysSlip > 0.15 || hit.forwardSlip > 0.15)
+            if (hit.sidewaysSlip > 0.15 || hit.forwardSlip > 0.25)
             {
                 trailRenderer.emitting = true;
             }
