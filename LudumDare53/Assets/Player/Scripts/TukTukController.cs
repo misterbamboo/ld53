@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class TukTukController : MonoBehaviour
@@ -59,29 +60,43 @@ public class TukTukController : MonoBehaviour
 
         var totalRPM = leftRPM + rightRPM;
         movingDirection = totalRPM == 0 ? 0 : Mathf.Sign(totalRPM);
-        // print($"movingForward: {movingForward} (leftRPM: {leftRPM} | rightRPM: {rightRPM} | totalRPM: {totalRPM})");
     }
 
     private void GetPlayerInput()
     {
         horizontal = Input.GetAxis("Horizontal");
         vertical = -Input.GetAxis("Vertical");
-
-        steering = maxSteeringAngle * horizontal;
+        steering = EaseSteering();
         motor = maxMotorTorque * vertical;
         brake = CalculateBreaks();
+    }
+
+    private float EaseSteering()
+    {
+        // Highspeed make small movement more smooth
+        var fixedDeltaSpeed = GetSpeed() * Time.fixedDeltaTime;
+
+        var standardSteering = maxSteeringAngle * horizontal;
+        var easeSteering = maxSteeringAngle * EaseInOutCubic(horizontal);
+
+        return Mathf.Lerp(standardSteering, easeSteering, fixedDeltaSpeed);
+    }
+
+    private float EaseInOutCubic(float x)
+    {
+        var sign = Mathf.Sin(x);
+        x = Mathf.Abs(x);
+        return (x < 0.5 ? 4 * x * x * x : 1 - Mathf.Pow(-2 * x + 2, 3) / 2) * sign;
     }
 
     private float CalculateBreaks()
     {
         if (Input.GetKey(KeyCode.Space))
         {
-            print($"break");
             return maxBreakTorque;
         }
         else if (vertical == 0)
         {
-            print($"vertical");
             return maxBreakTorque * 0.1f;
         }
         else if (vertical != 0)
@@ -89,18 +104,14 @@ public class TukTukController : MonoBehaviour
             var verticalDirection = vertical == 0 ? 0 : Mathf.Sign(vertical);
             if (movingDirection > 0 && verticalDirection < 0)
             {
-                print($"BREAK ... movingDirection: {movingDirection} | vertical sign: {Mathf.Sign(vertical)}");
                 return maxBreakTorque;
-
             }
             else if (movingDirection < 0 && verticalDirection > 0)
             {
-                print($"BREAK ... movingDirection: {movingDirection} | vertical sign: {Mathf.Sign(vertical)}");
                 return maxBreakTorque;
             }
         }
 
-        print($"default");
         return 0;
     }
 
@@ -114,8 +125,6 @@ public class TukTukController : MonoBehaviour
         axles.backRightWheel.motorTorque = motor;
         axles.backLeftWheel.motorTorque = motor;
 
-        //axles.frontLeftWheel.brakeTorque = brake * 0.1f;
-        //axles.frontRightWheel.brakeTorque = brake * 0.1f;
         axles.backRightWheel.brakeTorque = brake;
         axles.backLeftWheel.brakeTorque = brake;
     }
