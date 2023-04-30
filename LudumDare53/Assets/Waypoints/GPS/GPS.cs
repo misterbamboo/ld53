@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class GPS : MonoBehaviour
@@ -15,6 +16,9 @@ public class GPS : MonoBehaviour
     GameObject player;
     Waypoints waypointsManager;
 
+    [SerializeField]
+    LineRenderer lineRenderer;
+
     public void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -24,11 +28,18 @@ public class GPS : MonoBehaviour
 
     private IEnumerator StartGPSRefresh()
     {
-        var start = waypointsManager.GetClosestFromLocation(player.transform);
-
-        print("refresh");
         yield return new WaitForSecondsRealtime(refreshTimeInSeconds);
+        print("refresh");
+        
+        var start = waypointsManager.GetClosestFromLocation(player.transform);
+        
         waypoints = waypointsManager.AskShortestWay(start, destination);
+        
+        var positions = waypoints.Select(w => w.transform.position).ToArray();
+        print($"nb of points {positions.Length}");
+        lineRenderer.positionCount = positions.Length;
+        lineRenderer.SetPositions(positions);
+        
         StartCoroutine(StartGPSRefresh());
     }
 
