@@ -53,6 +53,5 @@ public class GPS : MonoBehaviour
 
     public void TravelClosest(Vector3 position)
     {
-        throw new NotImplementedException();
     }
 }
