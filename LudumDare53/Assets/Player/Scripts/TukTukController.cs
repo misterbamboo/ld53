@@ -131,7 +131,6 @@ public class TukTukController : MonoBehaviour
             var reverseForce = -rb.velocity * Time.fixedDeltaTime * 0.5f;
             var brakePercentage = brake / maxBreakTorque;
             var reversePercForce = reverseForce * brakePercentage;
-            print($"break force: {reversePercForce}");
             rb.velocity = rb.velocity + reversePercForce;
         }
     }
@@ -233,16 +232,20 @@ public class TukTukController : MonoBehaviour
             destination.gameObject.SetActive(true);
         }
 
-        yield return new WaitForSeconds(secsBeforeAutodestroyAnimated);
-
-        // Fade out in floor before to destroy the animationObject
-        while (animated.transform.position.y > -10f)
+        if (secsBeforeAutodestroyAnimated > 0)
         {
-            var pos = animated.transform.position;
-            pos.y -= 0.1f;
-            animated.transform.position = pos;
-            yield return new WaitForEndOfFrame();
+            yield return new WaitForSeconds(secsBeforeAutodestroyAnimated);
+
+            // Fade out in floor before to destroy the animationObject
+            while (animated.transform.position.y > -10f)
+            {
+                var pos = animated.transform.position;
+                pos.y -= 0.1f;
+                animated.transform.position = pos;
+                yield return new WaitForEndOfFrame();
+            }
         }
+
         Destroy(animated.gameObject);
     }
 
