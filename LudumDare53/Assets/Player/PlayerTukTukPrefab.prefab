@@ -303,7 +303,7 @@ MonoBehaviour:
     backLeftWheel: {fileID: 4396916265332443155}
     backRightWheel: {fileID: 4396916266676544050}
   maxMotorTorque: 6000
-  maxBreakTorque: 12000
+  maxBreakTorque: 50000
   maxSteeringAngle: 40
   centerOfMass: {fileID: 1963330612829272724}
   boxesHolder: {fileID: 7920264615335992881}

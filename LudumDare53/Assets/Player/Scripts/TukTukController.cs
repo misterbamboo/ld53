@@ -55,11 +55,9 @@ public class TukTukController : MonoBehaviour
 
     private void UpdateMovingForward()
     {
-        var leftRPM = axles.backLeftWheel.rpm;
-        var rightRPM = axles.backRightWheel.rpm;
-
-        var totalRPM = leftRPM + rightRPM;
-        movingDirection = totalRPM == 0 ? 0 : Mathf.Sign(totalRPM);
+        var forwardSpeed = Vector3.Dot(rb.velocity, rb.transform.forward);
+        var movingDirectionSign = forwardSpeed == 0 ? 0 : Mathf.Sign(forwardSpeed);
+        movingDirection = movingDirectionSign;
     }
 
     private void GetPlayerInput()
@@ -127,6 +125,15 @@ public class TukTukController : MonoBehaviour
 
         axles.backRightWheel.brakeTorque = brake;
         axles.backLeftWheel.brakeTorque = brake;
+
+        if (brake != 0 && (axles.backLeftWheel.isGrounded || axles.backRightWheel.isGrounded))
+        {
+            var reverseForce = -rb.velocity * Time.fixedDeltaTime * 0.5f;
+            var brakePercentage = brake / maxBreakTorque;
+            var reversePercForce = reverseForce * brakePercentage;
+            print($"break force: {reversePercForce}");
+            rb.velocity = rb.velocity + reversePercForce;
+        }
     }
 
     private void CheckSplips()
