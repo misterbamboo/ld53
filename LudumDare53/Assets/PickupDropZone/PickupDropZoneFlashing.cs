@@ -18,7 +18,12 @@ public class PickupDropZoneFlashing : MonoBehaviour
     {
         id = Guid.NewGuid();
         gameState = GameManager.GetGameState();
-        gameState.SubscribeDropZone(id);
+
+        if (gameObject.activeInHierarchy)
+        {
+            print($"Subscribe: {id} state: {gameObject.activeInHierarchy}");
+            gameState.SubscribeDropZone(id);
+        }
 
         currentState = flashingPlane.gameObject.activeInHierarchy;
 
