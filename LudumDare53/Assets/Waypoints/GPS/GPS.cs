@@ -26,7 +26,6 @@ public class GPS : MonoBehaviour
     {
         var start = waypointsManager.GetClosestFromLocation(player.transform);
 
-        print("refresh");
         yield return new WaitForSecondsRealtime(refreshTimeInSeconds);
         waypoints = waypointsManager.AskShortestWay(start, destination);
         StartCoroutine(StartGPSRefresh());

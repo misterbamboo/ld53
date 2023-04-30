@@ -21,7 +21,6 @@ public class PickupDropZoneFlashing : MonoBehaviour
 
         if (gameObject.activeInHierarchy)
         {
-            print($"Subscribe: {id} state: {gameObject.activeInHierarchy}");
             gameState.SubscribeDropZone(id);
         }
 
@@ -40,7 +39,6 @@ public class PickupDropZoneFlashing : MonoBehaviour
         {
             currentState = state;
             flashingPlane.SetActive(currentState);
-            print(id + " changed for state: " + state);
         }
     }
 
