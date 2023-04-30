@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
@@ -6,8 +7,16 @@ public class CameraController : MonoBehaviour
 
     [SerializeField] Vector3 offset;
 
+    [SerializeField] Vector3 speedOffset;
+
     [SerializeField] Quaternion rotation;
 
+    [SerializeField] float maxSpeed;
+    [SerializeField] private float upfrontScale = 40;
+
+    private IGameState state;
+    private float tValue;
+    private Vector3 flatDirection;
 
     private void OnDrawGizmos()
     {
@@ -17,14 +26,26 @@ public class CameraController : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        state = GameManager.GetGameState();
+    }
+
     void Update()
     {
+        float speed = state.GetSpeed();
+        tValue = Mathf.Clamp(speed / maxSpeed, 0, 1);
+        flatDirection = state.GetFlatDirection();
+
         Refresh();
     }
 
     private void Refresh()
     {
-        var newPos = followTarget.transform.position + offset;
+        var directionOffset = speedOffset + flatDirection * upfrontScale;
+        var computeOffset = Vector3.Lerp(offset, directionOffset, tValue);
+
+        var newPos = followTarget.transform.position + computeOffset;
         transform.position = newPos;
         transform.rotation = rotation;
     }

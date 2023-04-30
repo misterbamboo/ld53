@@ -11,6 +11,10 @@ public interface IGameState
     void SubscribeDropZone(Guid id);
 
     void DefineNextDropZone();
+
+    float GetSpeed();
+
+    Vector3 GetFlatDirection();
 }
 
 public class GameManager : MonoBehaviour, IGameState
@@ -59,5 +63,15 @@ public class GameManager : MonoBehaviour, IGameState
 
     }
 
+    public float GetSpeed()
+    {
+        return playerController.GetSpeed();
+    }
 
+    public Vector3 GetFlatDirection()
+    {
+        var direction = playerController.GetDirection();
+        direction.y = 0;
+        return direction;
+    }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -205,6 +206,16 @@ public class TukTukController : MonoBehaviour
 
         var newY = Mathf.Lerp(targetY, y, t);
         return new Vector3(pos.x, newY, pos.z);
+    }
+
+    public float GetSpeed()
+    {
+        return rb.velocity.magnitude;
+    }
+
+    public Vector3 GetDirection()
+    {
+        return rb.velocity.normalized;
     }
 }
 
