@@ -38196,6 +38196,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 165
       objectReference: {fileID: 0}
+    - target: {fileID: 9119617913671046777, guid: 5d9c1411727c30a40b3249d2419d3613,
+        type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d9c1411727c30a40b3249d2419d3613, type: 3}
 --- !u!4 &6635572238455871202 stripped
@@ -62373,27 +62378,27 @@ PrefabInstance:
     - target: {fileID: 6241746877990690337, guid: fba193d0eae7ee4439cb5e74721c0e26,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.9999619
       objectReference: {fileID: 0}
     - target: {fileID: 6241746877990690337, guid: fba193d0eae7ee4439cb5e74721c0e26,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0.008714498
       objectReference: {fileID: 0}
     - target: {fileID: 6241746877990690337, guid: fba193d0eae7ee4439cb5e74721c0e26,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.000000069952776
       objectReference: {fileID: 0}
     - target: {fileID: 6241746877990690337, guid: fba193d0eae7ee4439cb5e74721c0e26,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0.0004812034
       objectReference: {fileID: 0}
     - target: {fileID: 6241746877990690337, guid: fba193d0eae7ee4439cb5e74721c0e26,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: 0.999
       objectReference: {fileID: 0}
     - target: {fileID: 6241746877990690337, guid: fba193d0eae7ee4439cb5e74721c0e26,
         type: 3}
@@ -62403,7 +62408,7 @@ PrefabInstance:
     - target: {fileID: 6241746877990690337, guid: fba193d0eae7ee4439cb5e74721c0e26,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 0.055
       objectReference: {fileID: 0}
     - target: {fileID: 6761296241003955355, guid: fba193d0eae7ee4439cb5e74721c0e26,
         type: 3}

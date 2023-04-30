@@ -33,17 +33,21 @@ public class Waypoints : MonoBehaviour
             foreach (Waypoint w in availables)
             {
                 float d = Vector3.Distance(end.transform.position, w.transform.position);
-                if (d < distance)
+                if (d < distance && !route.Contains(w))
                 {
                     closest = w;
                     distance = d;
                 }
             }
-
+            
+            if(closest == null)
+            {
+                print("not found");
+            }
 
             route.Add(closest);
             current = closest;
-            // To remove block inifite
+
             currentCount++;
         }
 
