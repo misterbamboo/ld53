@@ -1,40 +1,73 @@
+using System;
 using UnityEngine;
 
 public class PickupDropZoneFlashing : MonoBehaviour
 {
     private const string PlayerTag = "Player";
 
+    private Guid id;
+
     [SerializeField] GameObject flashingPlane;
-    [SerializeField] Transform targetSpot;
+    [SerializeField] Transform[] targetSpots;
+    [SerializeField] ZoneType zoneType = ZoneType.PickupZone;
 
     private IGameState gameState;
     private bool currentState;
 
     void Start()
     {
+        id = Guid.NewGuid();
         gameState = GameManager.GetGameState();
+        gameState.SubscribeDropZone(id);
+
         currentState = flashingPlane.gameObject.activeInHierarchy;
+
+        foreach (Transform t in targetSpots)
+        {
+            t.gameObject.SetActive(false);
+        }
     }
 
     void Update()
     {
-        var isCarEmpty = gameState.IsCarEmpty();
-        if (isCarEmpty != currentState)
+        var state = FlashingPlaneShouldBeActive();
+        if (state != currentState)
         {
-            currentState = isCarEmpty;
-            print("change to: " + currentState);
+            currentState = state;
             flashingPlane.SetActive(currentState);
+            print(id + " changed for state: " + state);
         }
+    }
+
+    private bool FlashingPlaneShouldBeActive()
+    {
+        var isCarEmpty = gameState.IsCarEmpty();
+        if (zoneType == ZoneType.PickupZone && isCarEmpty)
+        {
+            return true;
+        }
+        else if (zoneType == ZoneType.DropZone && !isCarEmpty && id == gameState.DropZoneId)
+        {
+            return true;
+        }
+
+        return false;
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag(PlayerTag))
         {
-            if(gameState.IsCarEmpty())
+            var isCarEmpty = gameState.IsCarEmpty();
+            if (isCarEmpty && zoneType == ZoneType.PickupZone)
             {
                 var controller = other.GetComponent<TukTukController>();
-                controller.PickupFrom(targetSpot.position);
+                controller.PickupFrom(targetSpots[0].position);
+            }
+            else if (!isCarEmpty && zoneType == ZoneType.DropZone && id == gameState.DropZoneId)
+            {
+                var controller = other.GetComponent<TukTukController>();
+                controller.DropTo(targetSpots);
             }
         }
     }
@@ -43,7 +76,17 @@ public class PickupDropZoneFlashing : MonoBehaviour
     {
         if (other.gameObject.CompareTag(PlayerTag))
         {
-            print("player quit");
+            if (zoneType == ZoneType.PickupZone)
+            {
+                gameState.DefineNextDropZone();
+            }
         }
     }
+}
+
+
+public enum ZoneType
+{
+    PickupZone,
+    DropZone
 }
