@@ -29,6 +29,7 @@ public class TukTukController : MonoBehaviour
     private float brake;
 
     private Rigidbody rb;
+    private float movingDirection;
 
     private void Start()
     {
@@ -42,11 +43,23 @@ public class TukTukController : MonoBehaviour
             IsEmpty = true;
         }
     }
+
     private void FixedUpdate()
     {
+        UpdateMovingForward();
         GetPlayerInput();
         ApplyPlayerInputs();
         CheckSplips();
+    }
+
+    private void UpdateMovingForward()
+    {
+        var leftRPM = axles.backLeftWheel.rpm;
+        var rightRPM = axles.backRightWheel.rpm;
+
+        var totalRPM = leftRPM + rightRPM;
+        movingDirection = totalRPM == 0 ? 0 : Mathf.Sign(totalRPM);
+        // print($"movingForward: {movingForward} (leftRPM: {leftRPM} | rightRPM: {rightRPM} | totalRPM: {totalRPM})");
     }
 
     private void GetPlayerInput()
@@ -63,12 +76,31 @@ public class TukTukController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Space))
         {
+            print($"break");
             return maxBreakTorque;
         }
-        else if (Input.GetAxis("Vertical") == 0)
+        else if (vertical == 0)
         {
+            print($"vertical");
             return maxBreakTorque * 0.1f;
         }
+        else if (vertical != 0)
+        {
+            var verticalDirection = vertical == 0 ? 0 : Mathf.Sign(vertical);
+            if (movingDirection > 0 && verticalDirection < 0)
+            {
+                print($"BREAK ... movingDirection: {movingDirection} | vertical sign: {Mathf.Sign(vertical)}");
+                return maxBreakTorque;
+
+            }
+            else if (movingDirection < 0 && verticalDirection > 0)
+            {
+                print($"BREAK ... movingDirection: {movingDirection} | vertical sign: {Mathf.Sign(vertical)}");
+                return maxBreakTorque;
+            }
+        }
+
+        print($"default");
         return 0;
     }
 
