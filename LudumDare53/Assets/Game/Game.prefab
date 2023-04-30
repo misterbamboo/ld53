@@ -620,10 +620,25 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6432554408407436776, guid: 872a303eb8ed6474db595769d72ae069,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6432554408407436776, guid: 872a303eb8ed6474db595769d72ae069,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6459137999844376931, guid: 872a303eb8ed6474db595769d72ae069,
         type: 3}
       propertyPath: m_Name
       value: GPS
+      objectReference: {fileID: 0}
+    - target: {fileID: 7527529202315961071, guid: 872a303eb8ed6474db595769d72ae069,
+        type: 3}
+      propertyPath: m_Name
+      value: PointerIcon
       objectReference: {fileID: 0}
     - target: {fileID: 8924474956079421371, guid: 872a303eb8ed6474db595769d72ae069,
         type: 3}
