@@ -199,6 +199,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 133169729752107919, guid: 48e6bc29a99e8eb4383f1edbb655febc,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 133169729752107919, guid: 48e6bc29a99e8eb4383f1edbb655febc,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 465470970479134345, guid: 48e6bc29a99e8eb4383f1edbb655febc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -263,11 +273,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Game
-      objectReference: {fileID: 0}
-    - target: {fileID: 8231455400159705520, guid: 48e6bc29a99e8eb4383f1edbb655febc,
-        type: 3}
-      propertyPath: pointerIconHeight
-      value: 80
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48e6bc29a99e8eb4383f1edbb655febc, type: 3}

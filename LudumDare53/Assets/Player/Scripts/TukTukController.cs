@@ -130,8 +130,7 @@ public class TukTukController : MonoBehaviour
         {
             var reverseForce = -rb.velocity * Time.fixedDeltaTime * 0.5f;
             var brakePercentage = brake / maxBreakTorque;
-            var reversePercForce = reverseForce * brakePercentage;
-            print($"break force: {reversePercForce}");
+            var reversePercForce = reverseForce * brakePercentage;            
             rb.velocity = rb.velocity + reversePercForce;
         }
     }
