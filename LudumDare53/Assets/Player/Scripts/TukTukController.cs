@@ -1,19 +1,23 @@
-using System;
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class TukTukController : MonoBehaviour
 {
+    [Header("Car")]
     [SerializeField] AxleInfo axles;
     [SerializeField] float maxMotorTorque = 1000;
     [SerializeField] float maxBreakTorque = 2000;
     [SerializeField] float maxSteeringAngle = 60;
     [SerializeField] GameObject centerOfMass;
 
+    [Header("Transported Boxes")]
     [SerializeField] Transform boxesHolder;
     [SerializeField] Transform[] boxes;
     [SerializeField] Transform boxesSpawnPoint;
+
+    [Header("Trails")]
+    [SerializeField] TrailRenderer trailRendererLeft;
+    [SerializeField] TrailRenderer trailRendererRight;
 
     public bool IsEmpty { get; private set; }
 
@@ -41,6 +45,7 @@ public class TukTukController : MonoBehaviour
     {
         GetPlayerInput();
         ApplyPlayerInputs();
+        CheckSplips();
     }
 
     private void GetPlayerInput()
@@ -80,6 +85,24 @@ public class TukTukController : MonoBehaviour
         axles.frontRightWheel.brakeTorque = brake * 0.1f;
         axles.backRightWheel.brakeTorque = brake;
         axles.backLeftWheel.brakeTorque = brake;
+    }
+
+    private void CheckSplips()
+    {
+        CheckSlip(axles.backLeftWheel, trailRendererLeft);
+        CheckSlip(axles.backRightWheel, trailRendererRight);
+    }
+
+    private void CheckSlip(WheelCollider wheelCollider, TrailRenderer trailRenderer)
+    {
+        trailRenderer.emitting = false;
+        if (wheelCollider.GetGroundHit(out WheelHit hit))
+        {
+            if (hit.sidewaysSlip > 0.15 || hit.forwardSlip > 0.15)
+            {
+                trailRenderer.emitting = true;
+            }
+        }
     }
 
     public void PickupFrom(Vector3 fromPosition)
