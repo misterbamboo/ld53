@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4493456499050550144}
   - component: {fileID: 717248223904472101}
   - component: {fileID: 3319392877872408815}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_Banc (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6023596164649103852}
   - component: {fileID: 7221459714295447113}
   - component: {fileID: 4887302868258736771}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_Warehouse (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -150,6 +150,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SM_Warehouse
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7a8c4ffba6a0a1245a460b4565e25a23,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a8c4ffba6a0a1245a460b4565e25a23, type: 3}

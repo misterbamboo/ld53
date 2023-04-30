@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8003729585343570966}
   - component: {fileID: 6394317845647272883}
   - component: {fileID: 9176604835107037049}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_MailBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}

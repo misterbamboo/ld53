@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 228868231007749916}
   - component: {fileID: 3783799825424304313}
   - component: {fileID: 1397864851632110707}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_Poubelle (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -150,6 +150,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SM_Poubelle
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2558d8d9816763b4e890168a10bd3150,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2558d8d9816763b4e890168a10bd3150, type: 3}

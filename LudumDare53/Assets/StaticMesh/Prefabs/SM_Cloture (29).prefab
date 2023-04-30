@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6508201235487121902}
   - component: {fileID: 7925804417125248587}
   - component: {fileID: 5339837963354774145}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_Cloture (29)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

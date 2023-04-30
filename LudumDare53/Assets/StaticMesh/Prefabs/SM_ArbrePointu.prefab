@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2952939747969876675}
   - component: {fileID: 1089312866532636169}
   - component: {fileID: 4073181602212916166}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_ArbrePointu
   m_TagString: Untagged
   m_Icon: {fileID: 0}

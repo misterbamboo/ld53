@@ -98,7 +98,6 @@ public class PickupDropZoneFlashing : MonoBehaviour
             return;
         }
 
-        print("OnTriggerExit");
         if (other.gameObject.CompareTag(PlayerTag))
         {
             if (zoneType == ZoneType.PickupZone)

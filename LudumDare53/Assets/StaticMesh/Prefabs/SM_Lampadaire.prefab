@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7818543873671330445}
   - component: {fileID: 5433024998458297927}
   - component: {fileID: 7908601714395554374}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_Lampadaire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -165,6 +165,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SM_Lampadaire
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 22c321bafb47e764da362f67e41535e7,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22c321bafb47e764da362f67e41535e7, type: 3}

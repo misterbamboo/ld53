@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 188000521347202050}
   - component: {fileID: 3833745185455731623}
   - component: {fileID: 1355800807955695469}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_ClotureAngle 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -150,6 +150,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SM_Cloture
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dc2ff6d008c9a8b448b694239a446aaa,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc2ff6d008c9a8b448b694239a446aaa, type: 3}

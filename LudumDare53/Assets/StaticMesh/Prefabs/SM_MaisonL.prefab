@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1342305313617747738}
   - component: {fileID: 3838233308871715792}
   - component: {fileID: -3602862882345336506}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_MaisonL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -172,6 +172,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_box (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a52c16c19035ab743acb904fca0893c9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a52c16c19035ab743acb904fca0893c9, type: 3}
 --- !u!4 &769385811459691141 stripped
@@ -246,6 +251,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SM_box (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a52c16c19035ab743acb904fca0893c9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a52c16c19035ab743acb904fca0893c9, type: 3}
@@ -322,6 +332,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_box (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a52c16c19035ab743acb904fca0893c9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a52c16c19035ab743acb904fca0893c9, type: 3}
 --- !u!4 &1878933586434500413 stripped
@@ -397,6 +412,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_MaisonL
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8b75348b0adde1f419b736949de66ea5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b75348b0adde1f419b736949de66ea5, type: 3}
 --- !u!4 &5133252365716034981 stripped
@@ -471,6 +491,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SM_box (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a52c16c19035ab743acb904fca0893c9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a52c16c19035ab743acb904fca0893c9, type: 3}
@@ -587,6 +612,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: PickupDropZone
       objectReference: {fileID: 0}
+    - target: {fileID: 5519528536725138033, guid: ac9759a19c3b98344bf04c225cf24e84,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5941994993787762509, guid: ac9759a19c3b98344bf04c225cf24e84,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac9759a19c3b98344bf04c225cf24e84, type: 3}
 --- !u!4 &7971834670711879329 stripped
@@ -661,6 +696,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SM_box (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a52c16c19035ab743acb904fca0893c9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a52c16c19035ab743acb904fca0893c9, type: 3}
