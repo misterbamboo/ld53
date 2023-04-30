@@ -96,4 +96,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07564f9eb1542624ba36b82987b089fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arrowIconHeight: 20
+  arrowIconHeight: 40
