@@ -49,4 +49,9 @@ public class GPS : MonoBehaviour
     {
         destination = waypointsManager.GetClosestFromLocation(trans);
     }
+
+    public Transform GetDestination()
+    {
+        return destination?.transform;
+    }
 }
