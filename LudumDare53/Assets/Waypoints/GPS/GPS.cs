@@ -6,7 +6,7 @@ using UnityEngine;
 public class GPS : MonoBehaviour
 {
     [SerializeField]
-    float refreshTimeInSeconds = 1.0f;
+    float refreshTimeInSeconds = 0.5f;
 
     [SerializeField]
     Waypoint destination;
@@ -29,14 +29,12 @@ public class GPS : MonoBehaviour
     private IEnumerator StartGPSRefresh()
     {
         yield return new WaitForSecondsRealtime(refreshTimeInSeconds);
-        print("refresh");
         
         var start = waypointsManager.GetClosestFromLocation(player.transform);
         
         waypoints = waypointsManager.AskShortestWay(start, destination);
         
         var positions = waypoints.Select(w => w.transform.position).ToArray();
-        print($"nb of points {positions.Length}");
         lineRenderer.positionCount = positions.Length;
         lineRenderer.SetPositions(positions);
         
