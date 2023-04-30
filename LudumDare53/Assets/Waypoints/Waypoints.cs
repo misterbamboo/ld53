@@ -17,7 +17,7 @@ public class Waypoints : MonoBehaviour
     {
         var route = new List<Waypoint>();
 
-        var maxCount = 50;
+        var maxCount = 100;
         var currentCount = 0;
 
         Waypoint current = start;

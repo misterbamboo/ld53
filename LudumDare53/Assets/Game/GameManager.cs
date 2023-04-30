@@ -1,16 +1,21 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public interface IGameState
 {
-    Guid DropZoneId { get; }
+    Guid CurrentZoneId { get; }
 
     bool IsCarEmpty();
 
     void SubscribeDropZone(Guid id);
 
+    void SubscribeWarehouse(Guid id);
+
     void DefineNextDropZone();
+
+    void DefineNextWarehouse();
 
     float GetSpeed();
 
@@ -21,6 +26,8 @@ public class GameManager : MonoBehaviour, IGameState
 {
     [SerializeField] TukTukController playerController;
 
+    [SerializeField] float timerBeforeFirstCall = 5.0f;
+
     private static GameManager instance;
     internal static IGameState GetGameState()
     {
@@ -29,16 +36,27 @@ public class GameManager : MonoBehaviour, IGameState
 
     public void SubscribeDropZone(Guid id) => dropZones.Add(id);
 
+    public void SubscribeWarehouse(Guid id) => warehouses.Add(id);
+
     public void DefineNextDropZone()
     {
         var index = UnityEngine.Random.Range(0, dropZones.Count);
         var selectedGuid = dropZones[index];
-        DropZoneId = selectedGuid;
+        CurrentZoneId = selectedGuid;
+    }
+
+    public void DefineNextWarehouse()
+    {
+        var index = UnityEngine.Random.Range(0, warehouses.Count);
+        var selectedGuid = warehouses[index];
+        CurrentZoneId = selectedGuid;
     }
 
     private List<Guid> dropZones = new List<Guid>();
 
-    public Guid DropZoneId { get; private set; }
+    private List<Guid> warehouses = new List<Guid>();
+
+    public Guid CurrentZoneId { get; private set; }
 
     public bool IsCarEmpty()
     {
@@ -48,18 +66,17 @@ public class GameManager : MonoBehaviour, IGameState
     private void Awake()
     {
         instance = this;
+        StartCoroutine(StartFirstWarehouseCall(timerBeforeFirstCall));
     }
 
     // Start is called before the first frame update
     void Start()
     {
-
     }
 
     // Update is called once per frame
     void Update()
     {
-
     }
 
     public float GetSpeed()
@@ -72,5 +89,12 @@ public class GameManager : MonoBehaviour, IGameState
         var direction = playerController.GetDirection();
         direction.y = 0;
         return direction;
+    }
+
+    private IEnumerator StartFirstWarehouseCall(float timer)
+    {
+        yield return new WaitForSecondsRealtime(timer);
+        print("StartFirstWarehouseCall");
+        DefineNextWarehouse();
     }
 }

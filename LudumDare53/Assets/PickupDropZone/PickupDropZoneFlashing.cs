@@ -14,14 +14,25 @@ public class PickupDropZoneFlashing : MonoBehaviour
     private IGameState gameState;
     private bool currentState;
 
+    private GPS gps;
+
     void Start()
     {
+        gps = FindObjectOfType<GPS>();
+
         id = Guid.NewGuid();
         gameState = GameManager.GetGameState();
 
         if (gameObject.activeInHierarchy)
         {
-            gameState.SubscribeDropZone(id);
+            if (zoneType == ZoneType.DropZone)
+            {
+                gameState.SubscribeDropZone(id);
+            }
+            else if (zoneType == ZoneType.PickupZone)
+            {
+                gameState.SubscribeWarehouse(id);
+            }
         }
 
         currentState = flashingPlane.gameObject.activeInHierarchy;
@@ -40,19 +51,21 @@ public class PickupDropZoneFlashing : MonoBehaviour
             currentState = state;
             flashingPlane.SetActive(currentState);
 
-            GPS gps = FindObjectOfType<GPS>();
-            gps.TravelClosest(transform);
+            if (IsActive())
+            {
+                gps.TravelClosest(transform);
+            }
         }
     }
 
     private bool FlashingPlaneShouldBeActive()
     {
         var isCarEmpty = gameState.IsCarEmpty();
-        if (zoneType == ZoneType.PickupZone && isCarEmpty)
+        if (zoneType == ZoneType.PickupZone && isCarEmpty && IsActive())
         {
             return true;
         }
-        else if (zoneType == ZoneType.DropZone && !isCarEmpty && id == gameState.DropZoneId)
+        else if (zoneType == ZoneType.DropZone && !isCarEmpty && IsActive())
         {
             return true;
         }
@@ -65,12 +78,12 @@ public class PickupDropZoneFlashing : MonoBehaviour
         if (other.gameObject.CompareTag(PlayerTag))
         {
             var isCarEmpty = gameState.IsCarEmpty();
-            if (isCarEmpty && zoneType == ZoneType.PickupZone)
+            if (isCarEmpty && zoneType == ZoneType.PickupZone && IsActive())
             {
                 var controller = other.GetComponent<TukTukController>();
                 controller.PickupFrom(targetSpots[0].position);
             }
-            else if (!isCarEmpty && zoneType == ZoneType.DropZone && id == gameState.DropZoneId)
+            else if (!isCarEmpty && zoneType == ZoneType.DropZone && IsActive())
             {
                 var controller = other.GetComponent<TukTukController>();
                 controller.DropTo(targetSpots);
@@ -80,13 +93,28 @@ public class PickupDropZoneFlashing : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        if (!IsActive())
+        {
+            return;
+        }
+
+        print("OnTriggerExit");
         if (other.gameObject.CompareTag(PlayerTag))
         {
             if (zoneType == ZoneType.PickupZone)
             {
                 gameState.DefineNextDropZone();
             }
+            else if (zoneType == ZoneType.DropZone)
+            {
+                gameState.DefineNextWarehouse();
+            }
         }
+    }
+
+    private bool IsActive()
+    {
+        return id == gameState.CurrentZoneId;
     }
 }
 

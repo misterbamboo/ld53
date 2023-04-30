@@ -20,10 +20,14 @@ public class GPS : MonoBehaviour
     [SerializeField]
     LineRenderer lineRenderer;
 
+    [SerializeField]
+    PointerIcon pointerIcon;
+
     public void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         waypointsManager = GameObject.FindObjectOfType<Waypoints>();
+        TurnOffGPS();
         StartCoroutine(StartGPSRefresh());
     }
 
@@ -41,6 +45,10 @@ public class GPS : MonoBehaviour
             lineRenderer.positionCount = positions.Length;
             lineRenderer.SetPositions(positions);
         }
+        else
+        {
+            TurnOffGPS();
+        }
         
         StartCoroutine(StartGPSRefresh());
     }
@@ -53,5 +61,11 @@ public class GPS : MonoBehaviour
     public Transform GetDestination()
     {
         return destination?.transform;
+    }
+
+    private void TurnOffGPS()
+    {
+        lineRenderer.positionCount = 0;
+        pointerIcon.transform.position = new Vector3(500, 500, 500);
     }
 }
