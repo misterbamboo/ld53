@@ -34,7 +34,6 @@ public class GameManager : MonoBehaviour, IGameState
         var index = UnityEngine.Random.Range(0, dropZones.Count);
         var selectedGuid = dropZones[index];
         DropZoneId = selectedGuid;
-        print("New drop zone id: " + DropZoneId);
     }
 
     private List<Guid> dropZones = new List<Guid>();
