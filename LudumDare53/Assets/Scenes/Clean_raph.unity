@@ -130,6 +130,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 182528961477431913, guid: 49e9cee95c5aca441aefa05403c4f962,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1223742419431177795, guid: 49e9cee95c5aca441aefa05403c4f962,
         type: 3}
       propertyPath: m_RootOrder
@@ -184,6 +189,46 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2887834474446114674, guid: 49e9cee95c5aca441aefa05403c4f962,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4467048067618971985, guid: 49e9cee95c5aca441aefa05403c4f962,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4854583485325277573, guid: 49e9cee95c5aca441aefa05403c4f962,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4854583485325277573, guid: 49e9cee95c5aca441aefa05403c4f962,
+        type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    - target: {fileID: 5679522799577430507, guid: 49e9cee95c5aca441aefa05403c4f962,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5827793898388563684, guid: 49e9cee95c5aca441aefa05403c4f962,
+        type: 3}
+      propertyPath: m_Name
+      value: Terrain2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5827793898388563684, guid: 49e9cee95c5aca441aefa05403c4f962,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5827793898388563684, guid: 49e9cee95c5aca441aefa05403c4f962,
+        type: 3}
+      propertyPath: m_TagString
+      value: Terrain
       objectReference: {fileID: 0}
     - target: {fileID: 8692777470780585432, guid: 49e9cee95c5aca441aefa05403c4f962,
         type: 3}

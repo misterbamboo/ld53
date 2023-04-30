@@ -11,8 +11,7 @@ GameObject:
   - component: {fileID: 6241746877990690337}
   - component: {fileID: 7003370247193809284}
   - component: {fileID: 5103721232312182094}
-  - component: {fileID: 6707974860297001877}
-  - component: {fileID: 968842818122025342}
+  - component: {fileID: 8313788137368237718}
   m_Layer: 0
   m_Name: SM_routeDroit
   m_TagString: Untagged
@@ -86,8 +85,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &6707974860297001877
-MeshCollider:
+--- !u!65 &8313788137368237718
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -95,21 +94,7 @@ MeshCollider:
   m_GameObject: {fileID: 6761296241003955355}
   m_Material: {fileID: 13400000, guid: f22c1dc4a85efd24db613458080f91b6, type: 2}
   m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 527240322534566853, guid: 4c939ef9920aa3d4b972a5fbbf813458, type: 3}
---- !u!65 &968842818122025342
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6761296241003955355}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 23.980957, y: 1.5820631, z: 26.33}
-  m_Center: {x: -0, y: -0.8, z: -12.1}
+  m_Size: {x: 28, y: 1, z: 24}
+  m_Center: {x: 0, y: 0, z: -12}
