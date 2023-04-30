@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,15 +30,15 @@ public class GPS : MonoBehaviour
     private IEnumerator StartGPSRefresh()
     {
         yield return new WaitForSecondsRealtime(refreshTimeInSeconds);
-        
+
         var start = waypointsManager.GetClosestFromLocation(player.transform);
-        
+
         waypoints = waypointsManager.AskShortestWay(start, destination);
-        
+
         var positions = waypoints.Select(w => w.transform.position).ToArray();
         lineRenderer.positionCount = positions.Length;
         lineRenderer.SetPositions(positions);
-        
+
         StartCoroutine(StartGPSRefresh());
     }
 
@@ -48,5 +49,10 @@ public class GPS : MonoBehaviour
             Gizmos.color = Color.blue;
             Gizmos.DrawSphere(w.transform.position, 20.0f);
         }
+    }
+
+    public void TravelClosest(Vector3 position)
+    {
+        throw new NotImplementedException();
     }
 }

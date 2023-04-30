@@ -39,6 +39,9 @@ public class PickupDropZoneFlashing : MonoBehaviour
         {
             currentState = state;
             flashingPlane.SetActive(currentState);
+
+            GPS gps = FindObjectOfType<GPS>();
+            gps.TravelClosest(transform.position);
         }
     }
 
