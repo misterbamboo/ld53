@@ -17,8 +17,6 @@ public class GameManager : MonoBehaviour, IGameState
 {
     [SerializeField] TukTukController playerController;
 
-    [SerializeField] GPS GPS;
-
     private static GameManager instance;
     internal static IGameState GetGameState()
     {
