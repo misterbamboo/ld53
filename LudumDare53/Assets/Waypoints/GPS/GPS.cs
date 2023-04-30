@@ -10,9 +10,9 @@ public class GPS : MonoBehaviour
     float refreshTimeInSeconds = 0.5f;
 
     [SerializeField]
-    Waypoint destination;
+    Waypoint destination = null;
 
-    List<Waypoint> waypoints = new List<Waypoint>();
+    List<Waypoint> waypointsShortestRoute = new List<Waypoint>();
 
     GameObject player;
     Waypoints waypointsManager;
@@ -31,28 +31,22 @@ public class GPS : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(refreshTimeInSeconds);
 
-        var start = waypointsManager.GetClosestFromLocation(player.transform);
+        if (destination != null)
+        {
+            var start = waypointsManager.GetClosestFromLocation(player.transform);
 
-        waypoints = waypointsManager.AskShortestWay(start, destination);
+            waypointsShortestRoute = waypointsManager.AskShortestWay(start, destination);
 
-        var positions = waypoints.Select(w => w.transform.position).ToArray();
-        lineRenderer.positionCount = positions.Length;
-        lineRenderer.SetPositions(positions);
-
+            var positions = waypointsShortestRoute.Select(w => w.transform.position).ToArray();
+            lineRenderer.positionCount = positions.Length;
+            lineRenderer.SetPositions(positions);
+        }
+        
         StartCoroutine(StartGPSRefresh());
     }
 
-    public void OnDrawGizmos()
+    public void TravelClosest(Transform trans)
     {
-        foreach (var w in waypoints)
-        {
-            Gizmos.color = Color.blue;
-            Gizmos.DrawSphere(w.transform.position, 20.0f);
-        }
-    }
-
-    public void TravelClosest(Vector3 position)
-    {
-        throw new NotImplementedException();
+        destination = waypointsManager.GetClosestFromLocation(trans);
     }
 }
