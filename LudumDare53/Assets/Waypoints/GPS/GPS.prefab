@@ -52,6 +52,7 @@ MonoBehaviour:
   refreshTimeInSeconds: 2
   destination: {fileID: 0}
   lineRenderer: {fileID: 2936457909544789509}
+  pointerIcon: {fileID: 3372522933642289431}
 --- !u!120 &2936457909544789509
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -295,6 +296,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0bde40e4c9338f645bd6fcfd7abd8fbb, type: 3}
+--- !u!114 &3372522933642289431 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7913933543948335795, guid: 0bde40e4c9338f645bd6fcfd7abd8fbb,
+    type: 3}
+  m_PrefabInstance: {fileID: 4836420825354460068}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7a869e34871e584aa84aa55399ec109, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &7811238119227612346 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3420902498980890398, guid: 0bde40e4c9338f645bd6fcfd7abd8fbb,
