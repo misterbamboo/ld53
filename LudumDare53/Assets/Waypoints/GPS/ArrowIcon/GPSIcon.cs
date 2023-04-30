@@ -21,6 +21,7 @@ public class GPSIcon : MonoBehaviour
         var playerPos = player.transform.position;
         var newPos = new Vector3(playerPos.x, arrowIconHeight, playerPos.z);
         transform.position = newPos;
+
         UpdateRotation();
     }
 

@@ -21,19 +21,6 @@ public class GPSCamera : MonoBehaviour
 
     private void UpdateRotation()
     {
-        // Récupérer la rotation actuelle de l'objet
-        Quaternion rotation = transform.rotation;
-
-        // Convertir la rotation en angles d'Euler
-        Vector3 euler = rotation.eulerAngles;
-
-        // Modifier l'angle de rotation Y
-        euler.y = player.transform.rotation.eulerAngles.y;
-
-        // Convertir les angles d'Euler en rotation quaternion
-        rotation = Quaternion.Euler(euler);
-
-        // Appliquer la rotation à l'objet
-        transform.rotation = rotation;
+        transform.rotation = Quaternion.Euler(90f, player.transform.rotation.eulerAngles.y - 180, 0f);
     }
 }
