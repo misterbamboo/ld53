@@ -25,7 +25,9 @@ public class TukTukController : MonoBehaviour
     [SerializeField] float resetSpeedLimit = 5.0f;
 
     [Header("Sound")]
-    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioSource motorAudioSource;
+
+    [SerializeField] AudioSource driftAudioSource;
 
     public bool IsEmpty { get; private set; }
 
@@ -165,6 +167,18 @@ public class TukTukController : MonoBehaviour
             {
                 trailRenderer.emitting = true;
             }
+        }
+
+        if (trailRenderer.emitting)
+        {
+            if(!driftAudioSource.isPlaying)
+            {
+                driftAudioSource.Play();
+            }
+        }
+        else
+        {
+            StartCoroutine(StopDriftAudioSource());
         }
     }
 
@@ -307,7 +321,13 @@ public class TukTukController : MonoBehaviour
     private void CheckMotorSoundPitch()
     {
         float pitch = Mathf.Lerp(0.4f, 1.8f, Mathf.InverseLerp(0f, 80f, GetSpeed()));
-        audioSource.pitch = pitch;
+        motorAudioSource.pitch = pitch;
+    }
+
+    private IEnumerator StopDriftAudioSource()
+    {
+        yield return new WaitForSecondsRealtime(0.2f);
+        driftAudioSource.Stop();
     }
 }
 
