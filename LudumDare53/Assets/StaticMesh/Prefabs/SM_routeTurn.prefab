@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2011940927578413522}
   - component: {fileID: 3189676671337666167}
   - component: {fileID: 837939192452244157}
-  - component: {fileID: 5824384474579585504}
+  - component: {fileID: 6662925022846204202}
   m_Layer: 0
   m_Name: SM_routeTurn
   m_TagString: Untagged
@@ -85,16 +85,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5824384474579585504
+--- !u!65 &6662925022846204202
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1197967609955468136}
-  m_Material: {fileID: 13400000, guid: f22c1dc4a85efd24db613458080f91b6, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 27.6, y: 1.5820631, z: 28.42}
-  m_Center: {x: 0, y: -0.8, z: 12}
+  m_Size: {x: 26, y: 0.24078181, z: 26}
+  m_Center: {x: 1, y: 0.12039091, z: 13}
