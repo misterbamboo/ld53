@@ -71,6 +71,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: P_FootstepGrass
       objectReference: {fileID: 0}
+    - target: {fileID: 6776983092390460330, guid: fd06d4c9999fb5e4485eee1a4d301a63,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 6776983092390460331, guid: fd06d4c9999fb5e4485eee1a4d301a63,
         type: 3}
       propertyPath: m_RootOrder
