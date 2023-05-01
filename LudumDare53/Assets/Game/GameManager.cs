@@ -15,6 +15,8 @@ public interface IGameState
 
     void SubscribeWarehouse(Guid id);
 
+    void SubscribeAsFirstWarehouse(Guid id);
+
     void DefineNextDropZone();
 
     void DefineNextWarehouse();
@@ -46,6 +48,8 @@ public class GameManager : MonoBehaviour, IGameState
 
     public void SubscribeWarehouse(Guid id) => warehouses.Add(id);
 
+    public void SubscribeAsFirstWarehouse(Guid id) => firstWarehouse = id;
+
     public void DefineNextDropZone()
     {
         var index = UnityEngine.Random.Range(0, dropZones.Count);
@@ -56,21 +60,23 @@ public class GameManager : MonoBehaviour, IGameState
 
     public void DefineNextWarehouse()
     {
-        var index = UnityEngine.Random.Range(0, warehouses.Count);
-        var selectedGuid = warehouses[index];
-        CurrentZoneId = selectedGuid;
-
         if (!isFirstDelivery)
         {
+            var index = UnityEngine.Random.Range(0, warehouses.Count);
+            var selectedGuid = warehouses[index];
+            CurrentZoneId = selectedGuid;
             gps.IsOnDelivery(false);
         }
         else
         {
+            CurrentZoneId = firstWarehouse;
             isFirstDelivery = false;
         }
     }
 
     private List<Guid> dropZones = new List<Guid>();
+
+    private Guid firstWarehouse;
 
     private List<Guid> warehouses = new List<Guid>();
 

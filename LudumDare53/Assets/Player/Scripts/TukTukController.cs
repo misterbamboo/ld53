@@ -24,6 +24,9 @@ public class TukTukController : MonoBehaviour
     [Header("Reset")]
     [SerializeField] float resetSpeedLimit = 5.0f;
 
+    [Header("Sound")]
+    [SerializeField] AudioSource audioSource;
+
     public bool IsEmpty { get; private set; }
 
     private float horizontal;
@@ -36,6 +39,8 @@ public class TukTukController : MonoBehaviour
     private Rigidbody rb;
     private float movingDirection;
     private IGameState gameState;
+
+   
 
     private void Start()
     {
@@ -59,6 +64,7 @@ public class TukTukController : MonoBehaviour
         ApplyPlayerInputs();
         CheckSplips();
         CheckReset();
+        CheckMotorSoundPitch();
     }
 
     private void UpdateMovingForward()
@@ -296,6 +302,12 @@ public class TukTukController : MonoBehaviour
         Vector3 wpPos = wp.transform.position;
 
         gameObject.transform.position = new Vector3(wpPos.x, 5.0f, wpPos.z);
+    }
+
+    private void CheckMotorSoundPitch()
+    {
+        float pitch = Mathf.Lerp(0.4f, 1.8f, Mathf.InverseLerp(0f, 80f, GetSpeed()));
+        audioSource.pitch = pitch;
     }
 }
 

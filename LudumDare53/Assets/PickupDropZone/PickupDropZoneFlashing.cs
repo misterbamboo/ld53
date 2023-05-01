@@ -10,6 +10,7 @@ public class PickupDropZoneFlashing : MonoBehaviour
     [SerializeField] GameObject flashingPlane;
     [SerializeField] Transform[] targetSpots;
     [SerializeField] ZoneType zoneType = ZoneType.PickupZone;
+    [SerializeField] bool firstWarehouse = false;
 
     private IGameState gameState;
     private bool currentState;
@@ -32,6 +33,10 @@ public class PickupDropZoneFlashing : MonoBehaviour
             else if (zoneType == ZoneType.PickupZone)
             {
                 gameState.SubscribeWarehouse(id);
+                if (firstWarehouse) 
+                {
+                    gameState.SubscribeAsFirstWarehouse(id);
+                }
             }
         }
 
