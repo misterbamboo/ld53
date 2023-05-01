@@ -35,6 +35,7 @@ public class TukTukController : MonoBehaviour
 
     private Rigidbody rb;
     private float movingDirection;
+    private IGameState gameState;
 
     private void Start()
     {
@@ -47,6 +48,8 @@ public class TukTukController : MonoBehaviour
             box.gameObject.SetActive(false);
             IsEmpty = true;
         }
+
+        gameState = GameManager.GetGameState();
     }
 
     private void FixedUpdate()
@@ -174,7 +177,7 @@ public class TukTukController : MonoBehaviour
         IsEmpty = false;
         SetCarBoxesInactive();
 
-        return AnimateToPrePlacedDestination(fromPosition, boxes, true, 0);
+        return AnimateToPrePlacedDestination(fromPosition, boxes, true, 0, () => { });
     }
 
     private IEnumerator DropBoxes(Transform[] destinationItems)
@@ -182,7 +185,7 @@ public class TukTukController : MonoBehaviour
         IsEmpty = true;
         SetCarBoxesInactive();
 
-        return AnimateToPrePlacedDestination(boxesSpawnPoint.position, destinationItems, false, 60);
+        return AnimateToPrePlacedDestination(boxesSpawnPoint.position, destinationItems, false, 60, () => gameState.AddBox());
     }
 
     private void SetCarBoxesInactive()
@@ -193,7 +196,7 @@ public class TukTukController : MonoBehaviour
         }
     }
 
-    private IEnumerator AnimateToPrePlacedDestination(Vector3 spawnPoint, Transform[] hidedDestinations, bool reactivateDestination, float secsBeforeAutodestroyAnimated)
+    private IEnumerator AnimateToPrePlacedDestination(Vector3 spawnPoint, Transform[] hidedDestinations, bool reactivateDestination, float secsBeforeAutodestroyAnimated, Action callBack)
     {
         for (int i = 0; i < hidedDestinations.Length; i++)
         {
@@ -201,13 +204,13 @@ public class TukTukController : MonoBehaviour
             var animatedTransform = Instantiate(hidedDestination, spawnPoint, Quaternion.identity, null);
             animatedTransform.gameObject.SetActive(true);
 
-            StartCoroutine(MoveAnimatedTransformAndReactivateDestination(animatedTransform, hidedDestination, reactivateDestination, secsBeforeAutodestroyAnimated));
+            StartCoroutine(MoveAnimatedTransformAndReactivateDestination(animatedTransform, hidedDestination, reactivateDestination, secsBeforeAutodestroyAnimated, callBack));
 
             yield return new WaitForSeconds(0.25f);
         }
     }
 
-    private IEnumerator MoveAnimatedTransformAndReactivateDestination(Transform animated, Transform destination, bool reactivateDestination, float secsBeforeAutodestroyAnimated)
+    private IEnumerator MoveAnimatedTransformAndReactivateDestination(Transform animated, Transform destination, bool reactivateDestination, float secsBeforeAutodestroyAnimated, Action callBack)
     {
         var startingPos = animated.position;
         var startingRot = animated.rotation;
@@ -236,6 +239,11 @@ public class TukTukController : MonoBehaviour
         if (reactivateDestination)
         {
             destination.gameObject.SetActive(true);
+        }
+
+        if (callBack != null)
+        {
+            callBack.Invoke();
         }
 
         if (secsBeforeAutodestroyAnimated > 0)

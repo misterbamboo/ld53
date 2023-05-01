@@ -5,7 +5,9 @@ using UnityEngine;
 
 public interface IGameState
 {
+    event Action BoxCountChanged;
     Guid CurrentZoneId { get; }
+    int TotalBoxes { get; }
 
     bool IsCarEmpty();
 
@@ -20,6 +22,8 @@ public interface IGameState
     float GetSpeed();
 
     Vector3 GetFlatDirection();
+
+    void AddBox();
 }
 
 public class GameManager : MonoBehaviour, IGameState
@@ -70,7 +74,11 @@ public class GameManager : MonoBehaviour, IGameState
 
     private List<Guid> warehouses = new List<Guid>();
 
+    public event Action BoxCountChanged;
+
     public Guid CurrentZoneId { get; private set; }
+
+    public int TotalBoxes { get; private set; }
 
     public bool IsCarEmpty()
     {
@@ -111,5 +119,11 @@ public class GameManager : MonoBehaviour, IGameState
     {
         yield return new WaitForSecondsRealtime(timer);
         DefineNextWarehouse();
+    }
+
+    public void AddBox()
+    {
+        TotalBoxes++;
+        BoxCountChanged?.Invoke();
     }
 }
