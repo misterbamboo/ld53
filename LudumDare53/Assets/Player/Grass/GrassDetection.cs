@@ -6,6 +6,8 @@ public class GrassDetection : MonoBehaviour
 {
     ParticleSystem particle;
 
+    [SerializeField] AudioSource grassAudioSource;
+
     private void Awake()
     {
         particle = GetComponentInChildren<ParticleSystem>();
@@ -17,6 +19,11 @@ public class GrassDetection : MonoBehaviour
         if (other.tag == "Terrain")
         {
             particle.Play();
+
+            if (!grassAudioSource.isPlaying)
+            {
+                grassAudioSource.Play();
+            }            
         }
     }
 
@@ -25,6 +32,13 @@ public class GrassDetection : MonoBehaviour
         if (other.tag == "Terrain")
         {
             particle.Stop();
+            StartCoroutine(StopGrassAudioSource());
         }
+    }
+
+    private IEnumerator StopGrassAudioSource()
+    {
+        yield return new WaitForSecondsRealtime(0.2f);
+        grassAudioSource.Stop();
     }
 }
