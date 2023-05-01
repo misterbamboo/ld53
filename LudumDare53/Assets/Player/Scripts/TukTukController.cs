@@ -21,6 +21,9 @@ public class TukTukController : MonoBehaviour
     [SerializeField] TrailRenderer trailRendererLeft;
     [SerializeField] TrailRenderer trailRendererRight;
 
+    [Header("Reset")]
+    [SerializeField] float resetSpeedLimit = 5.0f;
+
     public bool IsEmpty { get; private set; }
 
     private float horizontal;
@@ -28,6 +31,7 @@ public class TukTukController : MonoBehaviour
     private float steering;
     private float motor;
     private float brake;
+    private bool reseting;
 
     private Rigidbody rb;
     private float movingDirection;
@@ -51,6 +55,7 @@ public class TukTukController : MonoBehaviour
         GetPlayerInput();
         ApplyPlayerInputs();
         CheckSplips();
+        CheckReset();
     }
 
     private void UpdateMovingForward()
@@ -67,6 +72,7 @@ public class TukTukController : MonoBehaviour
         steering = EaseSteering();
         motor = maxMotorTorque * vertical;
         brake = CalculateBreaks();
+        reseting = Input.GetButtonDown("Fire3");
     }
 
     private float EaseSteering()
@@ -267,6 +273,21 @@ public class TukTukController : MonoBehaviour
     public Vector3 GetDirection()
     {
         return rb.velocity.normalized;
+    }
+
+    private void CheckReset()
+    {
+        if (GetSpeed() > resetSpeedLimit || !reseting)
+        {
+            return;
+        }
+
+        Waypoints waypoints = FindObjectOfType<Waypoints>();
+        var wp = waypoints.GetClosestFromLocation(gameObject.transform);
+
+        Vector3 wpPos = wp.transform.position;
+
+        gameObject.transform.position = new Vector3(wpPos.x, 5.0f, wpPos.z);
     }
 }
 
