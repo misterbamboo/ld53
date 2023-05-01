@@ -19,7 +19,7 @@ public class CollisionDetection : MonoBehaviour
             return;
         }
 
-        print(other.name);
+        // TODO : ADD COLISION SOUND
         particle.gameObject.transform.position = other.ClosestPointOnBounds(transform.position);
         particle.Play();        
     }
