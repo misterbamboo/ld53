@@ -19,7 +19,6 @@ public class CollisionDetection : MonoBehaviour
             return;
         }
 
-        print(other.name);
         particle.gameObject.transform.position = other.ClosestPointOnBounds(transform.position);
         particle.Play();        
     }
