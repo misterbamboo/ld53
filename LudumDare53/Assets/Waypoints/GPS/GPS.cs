@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GPS : MonoBehaviour
 {
@@ -23,7 +24,13 @@ public class GPS : MonoBehaviour
     [SerializeField]
     PointerIcon pointerIcon;
 
-    public void Start()
+    [SerializeField]
+    Image deliveryTicket;
+
+    [SerializeField]
+    List<Sprite> possibleTicket;
+
+    void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         waypointsManager = GameObject.FindObjectOfType<Waypoints>();
@@ -61,6 +68,23 @@ public class GPS : MonoBehaviour
     public Transform GetDestination()
     {
         return destination?.transform;
+    }
+
+    public void IsOnDelivery(bool value)
+    {
+        if (!deliveryTicket.enabled)
+        {
+            deliveryTicket.enabled = true;
+        }
+
+        if (value)
+        {
+            deliveryTicket.sprite = possibleTicket[0];
+        }
+        else
+        {
+            deliveryTicket.sprite = possibleTicket[1];
+        }
     }
 
     private void TurnOffGPS()

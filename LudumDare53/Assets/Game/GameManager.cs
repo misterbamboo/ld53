@@ -26,7 +26,11 @@ public class GameManager : MonoBehaviour, IGameState
 {
     [SerializeField] TukTukController playerController;
 
-    [SerializeField] float timerBeforeFirstCall = 5.0f;
+    [SerializeField] float timerBeforeFirstCall = 2.0f;
+
+    GPS gps;
+
+    bool isFirstDelivery = true;
 
     private static GameManager instance;
     internal static IGameState GetGameState()
@@ -43,6 +47,7 @@ public class GameManager : MonoBehaviour, IGameState
         var index = UnityEngine.Random.Range(0, dropZones.Count);
         var selectedGuid = dropZones[index];
         CurrentZoneId = selectedGuid;
+        gps.IsOnDelivery(true);
     }
 
     public void DefineNextWarehouse()
@@ -50,6 +55,15 @@ public class GameManager : MonoBehaviour, IGameState
         var index = UnityEngine.Random.Range(0, warehouses.Count);
         var selectedGuid = warehouses[index];
         CurrentZoneId = selectedGuid;
+
+        if (!isFirstDelivery)
+        {
+            gps.IsOnDelivery(false);
+        }
+        else
+        {
+            isFirstDelivery = false;
+        }
     }
 
     private List<Guid> dropZones = new List<Guid>();
@@ -66,6 +80,8 @@ public class GameManager : MonoBehaviour, IGameState
     private void Awake()
     {
         instance = this;
+
+        gps = FindObjectOfType<GPS>();
         StartCoroutine(StartFirstWarehouseCall(timerBeforeFirstCall));
     }
 
@@ -94,7 +110,6 @@ public class GameManager : MonoBehaviour, IGameState
     private IEnumerator StartFirstWarehouseCall(float timer)
     {
         yield return new WaitForSecondsRealtime(timer);
-        print("StartFirstWarehouseCall");
         DefineNextWarehouse();
     }
 }

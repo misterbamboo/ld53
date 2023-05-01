@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 498985755395678195}
   - component: {fileID: 3549711115730145366}
   - component: {fileID: 1632533124708115612}
-  - component: {fileID: 8601994443675968639}
+  - component: {fileID: 3675151403722425223}
   m_Layer: 7
   m_Name: SM_Warehouse
   m_TagString: Untagged
@@ -118,8 +118,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8601994443675968639
-MeshCollider:
+--- !u!65 &3675151403722425223
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -128,10 +128,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -4497730502309093606, guid: 46e4a2889320d9e4bbbdab4028832ada, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 62.582047, y: 28.046257, z: 63.35748}
+  m_Center: {x: -0.38772583, y: 14.0231285, z: -0.90234566}
 --- !u!1001 &2818972743061935268
 PrefabInstance:
   m_ObjectHideFlags: 0
