@@ -17,6 +17,9 @@ public class PickupDropZoneFlashing : MonoBehaviour
 
     private GPS gps;
 
+    [SerializeField]
+    AudioSource ringAudioSource;
+
     void Start()
     {
         gps = FindObjectOfType<GPS>();
@@ -86,11 +89,15 @@ public class PickupDropZoneFlashing : MonoBehaviour
             if (isCarEmpty && zoneType == ZoneType.PickupZone && IsActive())
             {
                 var controller = other.GetComponent<TukTukController>();
+                ringAudioSource.pitch = 0.8f;
+                ringAudioSource.Play();
                 controller.PickupFrom(targetSpots[0].position);
             }
             else if (!isCarEmpty && zoneType == ZoneType.DropZone && IsActive())
             {
                 var controller = other.GetComponent<TukTukController>();
+                ringAudioSource.pitch = 1.0f;
+                ringAudioSource.Play();
                 controller.DropTo(targetSpots);
             }
         }

@@ -28,18 +28,6 @@ public class CollisionDetection : MonoBehaviour
             return;
         }
 
-
-
-
-        // Map the total speed to a volue range
-        float volume = Mathf.Lerp(0.01f, 0.05f, Mathf.InverseLerp(0.0f, 80.0f, gameState.GetSpeed()));
-
-        // Update the pitch of the audio source
-        crashAudioSource.volume = (volume);
-
-
-
-        // TODO : ADD COLISION SOUND
         particle.gameObject.transform.position = other.ClosestPointOnBounds(transform.position);
         particle.Play();
         crashAudioSource.Play();

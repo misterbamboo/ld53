@@ -29,6 +29,10 @@ public class TukTukController : MonoBehaviour
 
     [SerializeField] AudioSource driftAudioSource;
 
+    [SerializeField] AudioSource boxCollectingAudioSource;
+
+    [SerializeField] AudioSource windAudioSource;
+
     public bool IsEmpty { get; private set; }
 
     private float horizontal;
@@ -67,6 +71,7 @@ public class TukTukController : MonoBehaviour
         CheckSplips();
         CheckReset();
         CheckMotorSoundPitch();
+        CheckWindSound();
     }
 
     private void UpdateMovingForward()
@@ -224,6 +229,8 @@ public class TukTukController : MonoBehaviour
             var animatedTransform = Instantiate(hidedDestination, spawnPoint, Quaternion.identity, null);
             animatedTransform.gameObject.SetActive(true);
 
+            boxCollectingAudioSource.Play();
+
             StartCoroutine(MoveAnimatedTransformAndReactivateDestination(animatedTransform, hidedDestination, reactivateDestination, secsBeforeAutodestroyAnimated, callBack));
 
             yield return new WaitForSeconds(0.25f);
@@ -322,6 +329,15 @@ public class TukTukController : MonoBehaviour
     {
         float pitch = Mathf.Lerp(0.4f, 1.8f, Mathf.InverseLerp(0f, 80f, GetSpeed()));
         motorAudioSource.pitch = pitch;
+    }
+
+    private void CheckWindSound()
+    {
+        float volumeRange = 0.25f;  // The range of volume adjustment
+
+        float volume = (GetSpeed() / 100.0f) * volumeRange;  // Adjust volume based on speed
+        volume = Mathf.Clamp01(volume);  // Clamp volume between 0 and 1
+        windAudioSource.volume = volume;
     }
 
     private IEnumerator StopDriftAudioSource()
