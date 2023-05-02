@@ -333,9 +333,9 @@ public class TukTukController : MonoBehaviour
 
     private void CheckWindSound()
     {
-        float volumeRange = 0.25f;  // The range of volume adjustment
+        float volumeRange = 0.20f;  // The range of volume adjustment
 
-        float volume = (GetSpeed() / 100.0f) * volumeRange;  // Adjust volume based on speed
+        float volume = (GetSpeed() / 80.0f) * volumeRange;  // Adjust volume based on speed
         volume = Mathf.Clamp01(volume);  // Clamp volume between 0 and 1
         windAudioSource.volume = volume;
     }
