@@ -40,7 +40,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 498985755395678195}
-  - component: {fileID: 3549711115730145366}
   - component: {fileID: 3675151403722425223}
   m_Layer: 7
   m_Name: SM_Warehouse
@@ -68,14 +67,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &3549711115730145366
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 983772953632474441}
-  m_Mesh: {fileID: -4497730502309093606, guid: 46e4a2889320d9e4bbbdab4028832ada, type: 3}
 --- !u!65 &3675151403722425223
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -154,7 +145,7 @@ PrefabInstance:
     - target: {fileID: 1011004803698575459, guid: ac9759a19c3b98344bf04c225cf24e84,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.64
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 1011004803698575459, guid: ac9759a19c3b98344bf04c225cf24e84,
         type: 3}

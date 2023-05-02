@@ -249,6 +249,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 777803502480558053, guid: 49e9cee95c5aca441aefa05403c4f962,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.88
+      objectReference: {fileID: 0}
     - target: {fileID: 1223742419431177795, guid: 49e9cee95c5aca441aefa05403c4f962,
         type: 3}
       propertyPath: m_RootOrder
@@ -319,10 +324,20 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4749395558974505709, guid: 49e9cee95c5aca441aefa05403c4f962,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.88
+      objectReference: {fileID: 0}
     - target: {fileID: 4816082499561091913, guid: 49e9cee95c5aca441aefa05403c4f962,
         type: 3}
       propertyPath: MaxDistance
       value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 6117377639096959930, guid: 49e9cee95c5aca441aefa05403c4f962,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.88
       objectReference: {fileID: 0}
     - target: {fileID: 7016061590346962863, guid: 49e9cee95c5aca441aefa05403c4f962,
         type: 3}
@@ -348,6 +363,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MapPrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 8852760375385701901, guid: 49e9cee95c5aca441aefa05403c4f962,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 9053444997639764333, guid: 49e9cee95c5aca441aefa05403c4f962,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.88
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49e9cee95c5aca441aefa05403c4f962, type: 3}
